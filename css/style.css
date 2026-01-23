@@ -801,3 +801,33 @@ section {
         text-align: center;
     }
 }
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+}
+
+.brand-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    line-height: 1.2;
+    max-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .brand-text {
+        font-size: 1rem;
+        max-width: 150px;
+    }
+    .logo-img {
+        height: 50px;
+    }
+}

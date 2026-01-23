@@ -121,14 +121,8 @@ const leadForm = document.getElementById('lead-form');
 
 if (leadForm) {
     leadForm.addEventListener('submit', function(event) {
-       
         event.preventDefault(); 
-
-        // Definir com Jack se enviará as informações para um servidor ou plataforma de automação de marketing.
-        
-        alert('Obrigado! Seus dados foram enviados com sucesso. Em breve, um de nossos especialistas entrará em contato.');
-        
-        
+        alert('Obrigado! Seus dados foram enviados com sucesso. Em breve, um de nossos especialistas da CONDIGTAL entrará em contato.');
         leadForm.reset();
     });
 }
