@@ -1,4 +1,3 @@
-/* --- GLOBAIS E VARIÁVEIS --- */
 :root {
     --primary-color: #3498db; 
     --secondary-color: #2c3e50; 
@@ -52,19 +51,28 @@ section {
 }
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     padding: 12px 28px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
     cursor: pointer;
+    border: none;
+}
+
+.btn i {
+    font-size: 1.2rem;
 }
 
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--white-color);
 }
+
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
@@ -74,6 +82,7 @@ section {
     background-color: #e9ecef;
     color: var(--secondary-color);
 }
+
 .btn-secondary:hover {
      background-color: #ced4da;
 }
@@ -81,7 +90,9 @@ section {
 .btn-outline {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    background: transparent;
 }
+
 .btn-outline:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -92,7 +103,6 @@ section {
     font-size: 1.1rem;
 }
 
-/* --- CABEÇALHO --- */
 .main-header {
     background-color: var(--white-color);
     padding: 15px 0;
@@ -111,7 +121,7 @@ section {
 }
 
 .logo img {
-    height: 140px;
+    height: 50px;
 }
 
 .main-nav ul {
@@ -128,6 +138,7 @@ section {
     position: relative;
     padding-bottom: 5px;
 }
+
 .main-nav a:not(.btn)::after {
     content: '';
     position: absolute;
@@ -138,14 +149,13 @@ section {
     background-color: var(--primary-color);
     transition: width 0.3s ease;
 }
+
 .main-nav a:not(.btn):hover::after {
     width: 100%;
 }
 
-
-/* --- HERO SECTION --- */
 .hero-section {
-    background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('images/hero-background.jpg');
+    background-image: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('../images/hero-background.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white-color);
@@ -170,15 +180,16 @@ section {
     opacity: 0.9;
 }
 
-/* --- FEATURES SECTION --- */
 .features-section {
     background-color: var(--light-gray-color);
 }
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
+
 .feature-card {
     background-color: var(--white-color);
     padding: 40px;
@@ -187,38 +198,45 @@ section {
     box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .feature-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-.feature-card .material-icons {
+
+.feature-card i {
     font-size: 3.5rem;
     color: var(--primary-color);
     margin-bottom: 20px;
+    display: block;
 }
+
 .feature-card h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--secondary-color);
 }
 
-/* --- BENEFITS SECTION --- */
 .benefits-section .container {
     display: flex;
     gap: 60px;
     align-items: center;
 }
+
 .benefit-block {
     flex: 1;
 }
+
 .benefit-block h3 {
     font-size: 2rem;
     color: var(--secondary-color);
     margin-bottom: 30px;
 }
+
 .benefit-block ul {
     list-style: none;
 }
+
 .benefit-block li {
     display: flex;
     align-items: center;
@@ -226,20 +244,22 @@ section {
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
-.benefit-block .material-icons {
+
+.benefit-block i {
     color: var(--primary-color);
     font-size: 1.8rem;
 }
 
-/* --- TESTIMONIALS SECTION --- */
 .testimonials-section {
     background-color: var(--light-gray-color);
 }
+
 .testimonials-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
+
 .testimonial-card {
     background-color: var(--white-color);
     padding: 30px;
@@ -248,32 +268,36 @@ section {
     display: flex;
     flex-direction: column;
 }
+
 .testimonial-card p {
     font-style: italic;
     flex-grow: 1;
     margin-bottom: 20px;
 }
+
 .testimonial-author {
     display: flex;
     align-items: center;
     gap: 15px;
 }
+
 .testimonial-author img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
 }
+
 .testimonial-author strong {
     color: var(--secondary-color);
     display: block;
 }
+
 .testimonial-author span {
     font-size: 0.9rem;
     color: #777;
 }
 
-/* --- PRICING SECTION --- */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -301,7 +325,7 @@ section {
 }
 
 .pricing-card .price {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 10px;
@@ -332,8 +356,10 @@ section {
     align-items: center;
     gap: 10px;
 }
-.pricing-card .material-icons {
+
+.pricing-card i {
     color: #28a745;
+    font-size: 1.2rem;
 }
 
 .pricing-card.popular {
@@ -341,6 +367,7 @@ section {
     transform: scale(1.05);
     position: relative;
 }
+
 .popular-badge {
     position: absolute;
     top: -15px;
@@ -354,14 +381,15 @@ section {
     font-weight: 500;
 }
 
-/* --- FAQ SECTION --- */
 .faq-accordion {
     max-width: 800px;
     margin: 0 auto;
 }
+
 .faq-item {
     border-bottom: 1px solid #e0e0e0;
 }
+
 .faq-question {
     width: 100%;
     background: none;
@@ -376,10 +404,13 @@ section {
     justify-content: space-between;
     align-items: center;
 }
-.faq-question .material-icons {
+
+.faq-question i {
     transition: transform 0.3s ease;
+    font-size: 1.5rem;
 }
-.faq-item.active .faq-question .material-icons {
+
+.faq-item.active .faq-question i {
     transform: rotate(180deg);
 }
 
@@ -388,69 +419,41 @@ section {
     overflow: hidden;
     transition: max-height 0.4s ease-out;
 }
+
 .faq-answer p {
     padding: 0 0 20px 0;
     color: #555;
 }
 
-
-/* --- FINAL CTA --- */
 .final-cta-section {
     background-color: var(--secondary-color);
     color: var(--white-color);
     text-align: center;
 }
+
 .final-cta-section h2 {
     font-size: 2.8rem;
     margin-bottom: 15px;
 }
+
 .final-cta-section p {
     font-size: 1.1rem;
     margin-bottom: 30px;
     opacity: 0.9;
 }
 
-/* --- FOOTER --- */
 .main-footer {
     background-color: var(--light-gray-color);
-    padding: 40px 0;
+    padding: 60px 0;
     text-align: center;
 }
+
 .footer-logo {
-    height: 140px;
-    margin-bottom: 15px;
-    opacity: 0.7;
+    height: 60px;
+    margin-bottom: 20px;
+    opacity: 0.8;
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 992px) {
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-    .pricing-card {
-        margin-bottom: 30px;
-    }
-    .benefits-section .container {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-nav {
-        display: none; 
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Botão Flutuante (FAB) */
 .whatsapp-fab {
     position: fixed;
     width: 60px;
@@ -461,26 +464,23 @@ section {
     color: #FFF;
     border-radius: 50%;
     text-align: center;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 100;
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .whatsapp-fab:hover {
     transform: scale(1.1);
 }
 
-.whatsapp-fab svg {
-    width: 32px;
-    height: 32px;
-    fill: #FFF;
+.whatsapp-fab i {
+    font-size: 32px;
 }
 
-
-/* Container dos botões na seção final de CTA */
 .cta-buttons-container {
     display: flex;
     justify-content: center;
@@ -490,14 +490,9 @@ section {
     flex-wrap: wrap; 
 }
 
-
-/* Novo estilo para o botão de WhatsApp */
 .btn-whatsapp {
     background-color: #25D366;
     color: var(--white-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-whatsapp:hover {
@@ -506,22 +501,6 @@ section {
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
-
-/* Ajuste para botões com ícones (Material Icons e SVG) */
-.btn .material-icons {
-    margin-right: 8px; 
-}
-
-.btn {
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 8px; 
-}
-
-/* --- ESTILOS ADICIONAIS PARA MENU RESPONSIVO --- */
-
-/* Ícones do menu mobile  */
 .mobile-menu-icon {
     display: none;
     background: none;
@@ -531,77 +510,10 @@ section {
     color: var(--secondary-color);
 }
 
-.mobile-menu-icon .material-icons {
-    font-size: 36px;
+.mobile-menu-icon i {
+    font-size: 32px;
 }
 
-/* Quando a tela for menor que 768px */
-@media (max-width: 768px) {
-    
-    .mobile-menu-icon {
-        display: block;
-        z-index: 1002; 
-    }
-
-    .main-nav {
-        display: flex; 
-        flex-direction: column;
-        
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 85%;
-        max-width: 350px;
-        height: 100vh;
-        
-        background-color: var(--white-color);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
-        
-        padding: 80px 30px 30px 30px;
-        
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        z-index: 1001;
-    }
-
-    .main-nav.mobile-open {
-        transform: translateX(0);
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 25px; 
-        width: 100%;
-    }
-
-    .main-nav li {
-        width: 100%;
-    }
-
-    .main-nav a {
-        font-size: 1.3rem; 
-    }
-
-    .main-nav .btn {
-        width: 100%;
-        text-align: center;
-        padding: 15px;
-        margin-top: 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --- SEÇÃO DE DEMONSTRAÇÃO EM VÍDEO --- */
 .demo-section {
     background-color: var(--light-gray-color);
 }
@@ -621,7 +533,6 @@ section {
     background-color: #000;
 }
 
-/* O iframe e a imagem de capa preencherão o wrapper */
 .video-wrapper iframe,
 .video-wrapper .video-poster {
     position: absolute;
@@ -642,8 +553,8 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background-color: rgba(52, 152, 219, 0.9); 
     border: none;
     border-radius: 50%;
@@ -656,37 +567,33 @@ section {
 }
 
 .play-button:hover {
-    background-color: rgba(52, 152, 219, 1);
+    background-color: var(--primary-color);
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-.play-button .material-icons {
-    font-size: 50px;
+.play-button i {
+    font-size: 40px;
     color: var(--white-color);
-    padding-left: 5px;
 }
 
-/* Quando o vídeo estiver tocando, esconde a capa e o botão */
 .video-wrapper.playing .video-poster,
 .video-wrapper.playing .play-button {
     opacity: 0;
     pointer-events: none; 
 }
 
-/* --- SEÇÃO DE CAPTURA DE LEADS (Layout de 2 Colunas) --- */
 .lead-capture-section {
     padding: 100px 0;
-    background-color: var(--white-color); /* Fundo branco para a seção */
+    background-color: var(--white-color);
 }
 
 .lead-capture-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Cria duas colunas de larguras iguais */
-    align-items: center; /* Alinha o conteúdo das duas colunas verticalmente */
-    gap: 80px; /* Espaço entre as colunas */
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 80px;
 }
 
-/* Estilos da Coluna da Esquerda (Info) */
 .lead-info h3 {
     font-size: 2.5rem;
     color: var(--secondary-color);
@@ -706,98 +613,101 @@ section {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Estilos da Coluna da Direita (Formulário) */
 .form-container {
     background-color: var(--white-color);
     padding: 40px;
     border-radius: 15px;
-    /* Usamos borda em vez de sombra para um look mais clean, como na referência */
     border: 1px solid #e0e0e0; 
-}
-
-/* Remove o cabeçalho de dentro do formulário, pois ele já está na coluna da esquerda */
-.form-header {
-    display: none;
 }
 
 #lead-form .form-group {
     margin-bottom: 20px;
 }
 
-#lead-form label,
-#lead-form legend {
+#lead-form label {
     display: block;
     font-weight: 500;
     margin-bottom: 8px;
     color: var(--text-color);
 }
 
-#lead-form input[type="text"],
-#lead-form input[type="email"],
-#lead-form input[type="tel"] {
+#lead-form input, #lead-form select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
+    font-family: var(--font-family);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#lead-form input:focus {
+#lead-form input:focus, #lead-form select:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-#lead-form fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-.radio-option {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    cursor: pointer;
-}
-.radio-option:hover {
-    background-color: #f8f9fa;
-}
-
-.radio-option input[type="radio"] {
-    margin-right: 12px;
-    accent-color: var(--primary-color); 
-    width: 18px;
-    height: 18px;
-}
-
-.radio-option label {
-    margin-bottom: 0;
-    font-weight: 400;
-}
-
 .btn-full-width {
     width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
     font-size: 1.1rem;
     margin-top: 10px;
 }
 
-/* Ajustes para Responsividade */
 @media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    .benefits-section .container {
+        flex-direction: column;
+    }
     .lead-capture-grid {
-        /* Transforma em uma única coluna em telas menores */
         grid-template-columns: 1fr;
         gap: 50px;
     }
-
     .lead-info {
-        /* Centraliza o texto quando estiver em coluna única */
         text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: block;
+        z-index: 1002; 
+    }
+
+    .main-nav {
+        display: flex; 
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white-color);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 80px 30px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 1001;
+    }
+
+    .main-nav.mobile-open {
+        transform: translateX(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
     }
 }
