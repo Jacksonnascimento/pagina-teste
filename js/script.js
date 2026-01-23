@@ -116,6 +116,7 @@ function onPlayerStateChange(event) {
     }
 }
 
+
 // --- LÓGICA PARA O FORMULÁRIO DE LEADS ---
 const leadForm = document.getElementById('lead-form');
 
