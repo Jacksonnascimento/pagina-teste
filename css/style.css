@@ -837,3 +837,14 @@ section {
         grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas grandes */
     }
 }
+
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.rotating {
+    animation: spin 1s linear infinite;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
