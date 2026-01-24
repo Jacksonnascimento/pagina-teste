@@ -25,7 +25,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // LÓGICA DE SELEÇÃO DE PLANO (NOVO - Sem Backend)
+    const planButtons = document.querySelectorAll('.plan-btn');
+    
+    planButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Guarda o plano clicado na variável global
+            selectedPlanInterest = this.getAttribute('data-plan');
+            // Opcional: Você pode dar um foco visual no formulário aqui se quiser
+        });
+    });
+
 });
+
+// Variável global para armazenar o plano de interesse (se houver)
+let selectedPlanInterest = null;
 
 // LÓGICA PARA O MENU MOBILE
 const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
@@ -109,8 +123,9 @@ function onPlayerStateChange(event) {
 // --- LÓGICA PARA O FORMULÁRIO DE LEADS (INTEGRAÇÃO BACKEND) ---
 const leadForm = document.getElementById('lead-form');
 
-// URL DA API (Altere para o endereço de produção quando publicar o back-end)
+// URL DA API (Produção)
 const API_BASE_URL = 'https://residencialjardins.condigtal.com.br'; 
+//const API_BASE_URL = 'http://localhost:8080'; // URL da API (Desenvolvimento)
 
 if (leadForm) {
     leadForm.addEventListener('submit', async function(event) {
@@ -134,11 +149,17 @@ if (leadForm) {
             case 'outro': reasonText = "Outro motivo / Contato Geral"; break;
         }
 
+        // SE O USUÁRIO CLICOU EM UM PLANO, ADICIONA AO MOTIVO
+        if (selectedPlanInterest) {
+            reasonText += ` (Interesse no: ${selectedPlanInterest})`;
+        }
+
         const formData = {
             name: document.getElementById('lead-name').value,
             email: document.getElementById('lead-email').value,
             whatsapp: document.getElementById('lead-whatsapp').value,
-            reason: reasonText
+            reason: reasonText 
+            // Enviamos tudo no campo 'reason', assim não precisa mexer no Java
         };
 
         try {
@@ -153,12 +174,13 @@ if (leadForm) {
             if (response.ok) {
                 alert('Sucesso! Recebemos seus dados. Em breve nossa equipe entrará em contato.');
                 leadForm.reset();
+                selectedPlanInterest = null; // Limpa a seleção após envio
             } else {
                 throw new Error('Erro na resposta do servidor');
             }
         } catch (error) {
             console.error('Erro:', error);
-            alert('Não foi possível enviar sua solicitação no momento. Por favor, tente novamente ou entre em contato via WhatsApp.');
+            alert('Não foi possível enviar sua solicitação no momento. Verifique sua conexão ou tente novamente mais tarde.');
         } finally {
             // Restaura o botão
             submitButton.disabled = false;
