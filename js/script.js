@@ -25,20 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // LÓGICA DE SELEÇÃO DE PLANO (NOVO - Sem Backend)
+    // LÓGICA DE SELEÇÃO DE PLANO 
     const planButtons = document.querySelectorAll('.plan-btn');
     
     planButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Guarda o plano clicado na variável global
             selectedPlanInterest = this.getAttribute('data-plan');
-            // Opcional: Você pode dar um foco visual no formulário aqui se quiser
+            
         });
     });
 
 });
 
-// Variável global para armazenar o plano de interesse (se houver)
 let selectedPlanInterest = null;
 
 // LÓGICA PARA O MENU MOBILE
@@ -47,7 +45,6 @@ const mainNav = document.querySelector('.main-nav');
 const navLinks = document.querySelectorAll('.main-nav a');
 const icon = mobileMenuIcon ? mobileMenuIcon.querySelector('.material-icons') : null; 
 
-// Abre e fecha o menu pelo mesmo botão
 if (mobileMenuIcon) {
     mobileMenuIcon.addEventListener('click', () => {
         
@@ -61,7 +58,6 @@ if (mobileMenuIcon) {
     });
 }
 
-// Fecha o menu e reseta o ícone ao clicar em um link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         if (mainNav.classList.contains('mobile-open')) {
@@ -134,22 +130,18 @@ if (leadForm) {
         const submitButton = leadForm.querySelector('button[type="submit"]');
         const originalBtnText = submitButton.innerHTML;
         
-        // Feedback visual de carregamento
         submitButton.disabled = true;
         submitButton.innerHTML = '<span class="material-icons rotating">sync</span> Enviando...';
 
-        // Captura os dados
         const rawReason = document.querySelector('input[name="reason"]:checked').value;
         let reasonText = rawReason;
 
-        // Traduz o valor do radio button para texto bonito
         switch(rawReason) {
             case 'demonstracao': reasonText = "Solicitação de Demonstração do Sistema"; break;
             case 'suporte': reasonText = "Cliente solicitando Suporte Técnico"; break;
             case 'outro': reasonText = "Outro motivo / Contato Geral"; break;
         }
 
-        // SE O USUÁRIO CLICOU EM UM PLANO, ADICIONA AO MOTIVO
         if (selectedPlanInterest) {
             reasonText += ` (Interesse no: ${selectedPlanInterest})`;
         }
@@ -159,7 +151,7 @@ if (leadForm) {
             email: document.getElementById('lead-email').value,
             whatsapp: document.getElementById('lead-whatsapp').value,
             reason: reasonText 
-            // Enviamos tudo no campo 'reason', assim não precisa mexer no Java
+            
         };
 
         try {
@@ -174,7 +166,7 @@ if (leadForm) {
             if (response.ok) {
                 alert('Sucesso! Recebemos seus dados. Em breve nossa equipe entrará em contato.');
                 leadForm.reset();
-                selectedPlanInterest = null; // Limpa a seleção após envio
+                selectedPlanInterest = null; 
             } else {
                 throw new Error('Erro na resposta do servidor');
             }
@@ -188,3 +180,37 @@ if (leadForm) {
         }
     });
 }
+
+// --- MÁSCARA PARA O TELEFONE/WHATSAPP ---
+const phoneInput = document.getElementById('lead-whatsapp');
+
+if (phoneInput) {
+    phoneInput.addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+}
+
+// --- LÓGICA DO COOKIE BANNER  ---
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptButton = document.getElementById('accept-cookies');
+
+    if (cookieBanner && acceptButton) {
+        
+        if (!localStorage.getItem('cookiesAccepted')) {
+            cookieBanner.style.display = 'flex'; 
+        } else {
+            cookieBanner.style.display = 'none';
+        }
+
+        acceptButton.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            
+            cookieBanner.style.display = 'none';
+          
+            console.log('Cookies aceitos!');
+        });
+    }
+});

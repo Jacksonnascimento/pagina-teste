@@ -1,12 +1,19 @@
 /* --- GLOBAIS E VARIÁVEIS --- */
 :root {
-    --primary-color: #3498db; 
-    --secondary-color: #2c3e50; 
+    --primary-color: #D4AF37;     
+    --primary-hover: #B8962E;     
+    --secondary-color: #1A1C1E;   
+    
     --text-color: #333;
     --light-gray-color: #f4f7f6;
     --white-color: #ffffff;
     --font-family: 'Roboto', sans-serif;
     --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; 
 }
 
 * {
@@ -51,8 +58,12 @@ section {
     margin: 0 auto;
 }
 
+/* --- BOTÕES --- */
 .btn {
-    display: inline-block;
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px; 
     padding: 12px 28px;
     border-radius: 50px;
     text-decoration: none;
@@ -61,13 +72,21 @@ section {
     cursor: pointer;
 }
 
+.btn .material-icons {
+    margin-right: 0; 
+}
+
+/* Botão Primário (Dourado) */
 .btn-primary {
     background-color: var(--primary-color);
-    color: var(--white-color);
+    color: var(--secondary-color); 
+    font-weight: 700; 
 }
+
 .btn-primary:hover {
+    background-color: var(--primary-hover);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); 
 }
 
 .btn-secondary {
@@ -81,10 +100,11 @@ section {
 .btn-outline {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    font-weight: 700;
 }
 .btn-outline:hover {
     background-color: var(--primary-color);
-    color: var(--white-color);
+    color: var(--secondary-color); 
 }
 
 .btn-large {
@@ -128,6 +148,8 @@ section {
     position: relative;
     padding-bottom: 5px;
 }
+
+/* Sublinhado animado */
 .main-nav a:not(.btn)::after {
     content: '';
     position: absolute;
@@ -145,7 +167,7 @@ section {
 
 /* --- HERO SECTION --- */
 .hero-section {
-    background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('images/hero-background.jpg');
+    background-image: linear-gradient(rgba(26, 28, 30, 0.9), rgba(26, 28, 30, 0.8)), url('../images/background-login.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white-color);
@@ -275,19 +297,23 @@ section {
 
 /* --- PRICING SECTION --- */
 .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    align-items: flex-start;
+    display: grid;    
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 20px;
+    align-items: stretch; 
 }
 
 .pricing-card {
     background-color: var(--white-color);
-    padding: 40px;
+    padding: 30px;
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     text-align: center;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eee;
 }
 
 .pricing-card:hover {
@@ -333,7 +359,7 @@ section {
     gap: 10px;
 }
 .pricing-card .material-icons {
-    color: #28a745;
+    color: #28a745; 
 }
 
 .pricing-card.popular {
@@ -347,11 +373,44 @@ section {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-color);
-    color: var(--white-color);
+    color: var(--secondary-color); 
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Destaque para o Setup */
+.setup-fee {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+}
+.setup-fee strong {
+    color: var(--secondary-color);
+}
+
+/* Banner de Oferta (Flash Sales) */
+.offer-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 40px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.offer-banner .material-icons {
+    color: #d39e00;
 }
 
 /* --- FAQ SECTION --- */
@@ -422,6 +481,13 @@ section {
     opacity: 0.7;
 }
 
+.footer-credit {
+    font-size: 0.85rem;  
+    margin-top: 5px;      
+    opacity: 0.8;        
+    font-weight: 400;     
+}
+
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 992px) {
     .pricing-grid {
@@ -450,7 +516,6 @@ section {
     }
 }
 
-/* Botão Flutuante (FAB) */
 .whatsapp-fab {
     position: fixed;
     width: 60px;
@@ -480,7 +545,6 @@ section {
 }
 
 
-/* Container dos botões na seção final de CTA */
 .cta-buttons-container {
     display: flex;
     justify-content: center;
@@ -507,21 +571,8 @@ section {
 }
 
 
-/* Ajuste para botões com ícones (Material Icons e SVG) */
-.btn .material-icons {
-    margin-right: 8px; 
-}
-
-.btn {
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 8px; 
-}
-
 /* --- ESTILOS ADICIONAIS PARA MENU RESPONSIVO --- */
 
-/* Ícones do menu mobile  */
 .mobile-menu-icon {
     display: none;
     background: none;
@@ -535,7 +586,6 @@ section {
     font-size: 36px;
 }
 
-/* Quando a tela for menor que 768px */
 @media (max-width: 768px) {
     
     .mobile-menu-icon {
@@ -621,7 +671,6 @@ section {
     background-color: #000;
 }
 
-/* O iframe e a imagem de capa preencherão o wrapper */
 .video-wrapper iframe,
 .video-wrapper .video-poster {
     position: absolute;
@@ -644,7 +693,7 @@ section {
     transform: translate(-50%, -50%);
     width: 90px;
     height: 90px;
-    background-color: rgba(52, 152, 219, 0.9); 
+    background-color: rgba(212, 175, 55, 0.9); 
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -656,7 +705,7 @@ section {
 }
 
 .play-button:hover {
-    background-color: rgba(52, 152, 219, 1);
+    background-color: rgba(212, 175, 55, 1);
     transform: translate(-50%, -50%) scale(1.1);
 }
 
@@ -666,7 +715,6 @@ section {
     padding-left: 5px;
 }
 
-/* Quando o vídeo estiver tocando, esconde a capa e o botão */
 .video-wrapper.playing .video-poster,
 .video-wrapper.playing .play-button {
     opacity: 0;
@@ -676,14 +724,14 @@ section {
 /* --- SEÇÃO DE CAPTURA DE LEADS (Layout de 2 Colunas) --- */
 .lead-capture-section {
     padding: 100px 0;
-    background-color: var(--white-color); /* Fundo branco para a seção */
+    background-color: var(--white-color); 
 }
 
 .lead-capture-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Cria duas colunas de larguras iguais */
-    align-items: center; /* Alinha o conteúdo das duas colunas verticalmente */
-    gap: 80px; /* Espaço entre as colunas */
+    grid-template-columns: 1fr 1fr; 
+    align-items: center; 
+    gap: 80px; 
 }
 
 /* Estilos da Coluna da Esquerda (Info) */
@@ -711,11 +759,10 @@ section {
     background-color: var(--white-color);
     padding: 40px;
     border-radius: 15px;
-    /* Usamos borda em vez de sombra para um look mais clean, como na referência */
     border: 1px solid #e0e0e0; 
 }
 
-/* Remove o cabeçalho de dentro do formulário, pois ele já está na coluna da esquerda */
+
 .form-header {
     display: none;
 }
@@ -746,7 +793,7 @@ section {
 #lead-form input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 #lead-form fieldset {
@@ -791,13 +838,11 @@ section {
 /* Ajustes para Responsividade */
 @media (max-width: 992px) {
     .lead-capture-grid {
-        /* Transforma em uma única coluna em telas menores */
         grid-template-columns: 1fr;
         gap: 50px;
     }
 
     .lead-info {
-        /* Centraliza o texto quando estiver em coluna única */
         text-align: center;
     }
 }
@@ -832,9 +877,10 @@ section {
     }
 }
 
+/* Ajuste de responsividade específico */
 @media (min-width: 1200px) {
-    .features-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas grandes */
+    .pricing-grid {
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
@@ -847,4 +893,49 @@ section {
     animation: spin 1s linear infinite;
     font-size: 1.2rem;
     vertical-align: middle;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: var(--white-color);
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    z-index: 9999;
+    border-left: 5px solid var(--primary-color);
+    /* Animação de entrada */
+    animation: slideUp 0.5s ease-out;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.cookie-banner.hidden {
+    display: none;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-banner button {
+        width: 100%;
+    }
 }
